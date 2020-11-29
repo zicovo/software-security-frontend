@@ -9,6 +9,10 @@ module.exports = {
   },
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off"
+    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+     // we only want single quotes
+     'quotes': ['error', 'single'],
+     // we want to force semicolons
+     'prettier/prettier': 0
   }
 };
