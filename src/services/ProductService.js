@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-    baseURL: 'http://software-security-zico.eu-central-1.elasticbeanstalk.com:8080',
+    baseURL: 'http://api.software-security.zaci.xyz/',
     headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
