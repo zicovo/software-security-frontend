@@ -24,6 +24,7 @@ export default {
 
   async created() {
     await this.getProducts();
+    console.log(this.$auth.user)
   },
 
   methods: {
