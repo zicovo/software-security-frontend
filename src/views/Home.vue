@@ -1,12 +1,23 @@
 <template>
   <div class="home">
-    <h1>Choose your favorites now:</h1>
-    <v-row>
+    <h2 class="mt-3 mb-3">Welcome! {{$auth.user.nickname}}</h2>
+ 
+    <Carrousel/>
+    <v-row class="mt-5">
+      <v-col>
+        <h2>Some classics</h2>
+      </v-col>
+    </v-row>
+      <v-row class="mt-5">
       <v-col v-for="product in Products" :key="product.id" cols="3">
         <ProductItem :product="product"/>
       </v-col>
     </v-row>
-      
+
+    <Featured/>
+
+    
+
   </div>
 </template>
 
@@ -14,18 +25,26 @@
 import { getInstance } from '@/auth';
 import { mapState } from 'vuex'
 import ProductItem from '@/components/ProductItem'
+import Carrousel from '@/components/Carrousel'
+import Featured from '@/components/Featured'
+
 
 export default {
   name: 'home',
   components: {
-    ProductItem
+    ProductItem,
+    Carrousel,
+    Featured,
+
   },
-  computed: mapState({Products: state => state.Products.Products}),
+ 
 
   async created() {
     await this.getProducts();
     console.log(this.$auth.user)
   },
+
+   computed: mapState({Products: state => state.Products.Products}),
 
   methods: {
     async getProducts() {
