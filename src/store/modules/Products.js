@@ -11,9 +11,9 @@ export const mutations = {
 }
 
 export const actions = {
-    async fetchProducts({ commit }, accessToken){
+    async fetchProducts({ commit }){
     try {
-        const products = await ProductService.getProducts(accessToken)
+        const products = await ProductService.getProducts()
         console.log(products)
         commit('SET_PRODUCTS', products)
     } catch (error) {

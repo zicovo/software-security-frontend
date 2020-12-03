@@ -41,7 +41,7 @@ export default {
 
   async created() {
     await this.getProducts();
-    console.log(this.$auth.user)
+    
   },
 
    computed: mapState({Products: state => state.Products.Products}),
@@ -49,16 +49,17 @@ export default {
   methods: {
     async getProducts() {
       //get accessToken
-      const instance = getInstance();
+      // const instance = getInstance();
 
-      instance.$watch('loading', async loading => {
-        if (!loading && instance.isAuthenticated) {
-          const accesToken = await instance.getTokenSilently();
-          // const products = await ProductService.getProducts(accesToken);
-          this.$store.dispatch('Products/fetchProducts', accesToken);
-        }
-      });
+      // instance.$watch('loading', async loading => {
+      //   if (!loading && instance.isAuthenticated) {
+      //     const accesToken = await instance.getTokenSilently();
+      //     // const products = await ProductService.getProducts(accesToken);
+      //     this.$store.dispatch('Products/fetchProducts', accesToken);
+      //   }
+      // });
 
+      this.$store.dispatch('Products/fetchProducts');
       
     }
   }

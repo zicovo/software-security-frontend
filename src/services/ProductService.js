@@ -12,9 +12,18 @@ const apiClient = axios.create({
 export default {
 
 
-    async getProducts(accesToken) {
+    // async getProducts(accesToken) {
+    //     try {
+    //         const { data } = await apiClient.get('/products', {headers: {Authorization: `Bearer ${accesToken}`}})
+    //         return data;
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+
+    // }
+    async getProducts() {
         try {
-            const { data } = await apiClient.get('/products', {headers: {Authorization: `Bearer ${accesToken}`}})
+            const { data } = await apiClient.get('/products')
             return data;
         } catch (error) {
             console.log(error)
