@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { getInstance } from '@/auth';
+// import { getInstance } from '@/auth';
 import { mapState } from 'vuex'
 import ProductItem from '@/components/ProductItem'
 import Carrousel from '@/components/Carrousel'
