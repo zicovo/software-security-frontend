@@ -10,7 +10,7 @@
               <v-btn class="ml-5 mt-3" dark>Discover</v-btn>
               </v-col>
             <v-col>
-              <v-img src="../../public/assets/featured/featured.jpeg" contain height="330px" class="mt-2"></v-img>
+              <v-img src="../../public/assets/featured.jpeg" contain height="330px" class="mt-2"></v-img>
               </v-col>
           </v-row>
         </v-sheet>
