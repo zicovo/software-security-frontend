@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <h2 class="mt-3 mb-3">Welcome! {{$auth.user.nickname}}</h2>
+    <v-row>
+      <v-col>
+        <h2 class="mt-3 mb-3"  v-if="$auth.isAuthenticated">Welcome! {{$auth.user.nickname}}</h2>
+      </v-col>
+    </v-row>
  
     <Carrousel/>
     <v-row class="mt-5">
@@ -15,6 +19,7 @@
     </v-row>
 
     <Featured/>
+
 
     
 
