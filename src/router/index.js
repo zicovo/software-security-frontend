@@ -4,6 +4,7 @@ import Home from '../views/Home.vue';
 import Men from '../views/Men.vue';
 import Women from '../views/Women.vue';
 import Kids from '../views/Kids.vue';
+import Profile from '../views/Profile.vue';
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/Kids',
     name: 'Kids',
     component: Kids
+  },
+  {
+    path: '/Profile',
+    name: 'Profile',
+    component: Profile
   },
 ];
 
