@@ -2,7 +2,7 @@
     <div>
         <v-carousel
     cycle
-    height="500"
+    :height="this.carrouselHeight"
     hide-delimiter-background
     show-arrows-on-hover
   >
@@ -33,6 +33,16 @@
         ],
       }
     },
+    computed: {
+        carrouselHeight() {
+         let carrouselHeight = 500;
+
+         if(this.$vuetify.breakpoint.smAndDown){
+          carrouselHeight = 300
+        }
+         return carrouselHeight;
+        },
+    }
   }
 </script>
 

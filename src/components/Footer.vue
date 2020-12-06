@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-footer padless height="70px">
+        <v-footer padless height="75px" class="mt-5">
             <v-card
              flat
              tile
@@ -11,6 +11,7 @@
                    
                 <v-card-text class="white--text">
                 {{ new Date().getFullYear() }} — <strong> &copy; Zaci All rights reserved</strong>
+                    <v-divider v-if="$vuetify.breakpoint.smAndDown" class="mt-1"></v-divider>
                     <v-btn text dark>Privacy policy.</v-btn>
 
                  <v-btn text dark icon>

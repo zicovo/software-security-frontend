@@ -13,7 +13,8 @@
       </v-col>
     </v-row>
       <v-row class="mt-5">
-      <v-col v-for="product in Products" :key="product.id" cols="3">
+      <v-col v-for="product in Products" :key="product.id" md="3" sm="4" xs="6">
+
         <ProductItem :product="product"/>
       </v-col>
     </v-row>
@@ -21,7 +22,7 @@
     <Featured/>
 
 
-    
+
 
   </div>
 </template>
@@ -46,6 +47,7 @@ export default {
 
   async created() {
     await this.getProducts();
+    console.log(this.Products)
     
   },
 

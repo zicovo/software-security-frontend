@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-app-bar app color="primary" dark>
-       <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
+       <v-app-bar-nav-icon v-if="$vuetify.breakpoint.smAndDown" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <router-link :to="{name: 'Home'}">
         <v-img 
        src="../../public/assets/logo-winkel.png"
@@ -95,11 +95,58 @@
     </div>
 
     </v-app-bar>
+
+<!-- mobile navigation drawer -->
+
+<v-navigation-drawer
+      v-model="drawer"
+      absolute
+      bottom
+      temporary
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <v-list-item>
+            <v-list-item-title>Men</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>Women</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>Kids</v-list-item-title>
+          </v-list-item>
+
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+
     </div>
 </template>
 
 <script>
 export default {
+
+
+  data() {
+    return {
+      drawer: false,
+      group: null
+    }
+  },
+  watch: {
+      group () {
+        this.drawer = false
+      },
+    },
+      
     methods: {
          // Log the user in
     login() {
@@ -127,6 +174,7 @@ export default {
       }
     }
 }
+
 </script>
 
 <style lang="scss" scoped>

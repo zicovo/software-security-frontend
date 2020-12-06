@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const apiClient = axios.create({
     baseURL: 'https://api-software-security.zaci.xyz',
+    // baseURL: 'http://localhost:4000/api',
     headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -24,7 +25,8 @@ export default {
     async getProducts() {
         try {
             const { data } = await apiClient.get('/products')
-            return data;
+            console.log(data[0])
+            return data
         } catch (error) {
             console.log(error)
         }
