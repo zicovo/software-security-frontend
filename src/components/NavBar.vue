@@ -9,16 +9,19 @@
        max-width="50"
        contain
        class="mx-2 mr-4"
+       
       >
        
        </v-img>
       </router-link>
          
 
-      
-      <v-btn depressed rounded text :to="{name: 'Men'}">Men</v-btn>
+      <div v-if="!$vuetify.breakpoint.smAndDown">
+        <v-btn depressed rounded text :to="{name: 'Men'}">Men</v-btn>
       <v-btn depressed rounded text :to="{name: 'Women'}">Women</v-btn>
       <v-btn depressed rounded text :to="{name: 'Kids'}">Kids</v-btn>
+      </div>
+      
 
       <v-spacer></v-spacer>
       <div v-if="!$auth.loading">
@@ -98,10 +101,11 @@
 
 <!-- mobile navigation drawer -->
 
+
+
 <v-navigation-drawer
       v-model="drawer"
       absolute
-      bottom
       temporary
     >
       <v-list
@@ -110,18 +114,33 @@
       >
         <v-list-item-group
           v-model="group"
-          active-class="deep-purple--text text--accent-4"
+          active-class="blue--text text--accent-4"
         >
+        <v-list-item>
+            <v-list-item-title>
+              <!-- <router-link :to="{name: 'Women'}">Women</router-link> -->
+              <v-btn depressed rounded text :to="{name: 'Home'}">Home</v-btn>
+            </v-list-item-title>
+          </v-list-item>
           <v-list-item>
-            <v-list-item-title>Men</v-list-item-title>
+            <v-list-item-title>
+              <!-- <router-link :to="{name: 'Men'}">Men</router-link> -->
+              <v-btn depressed rounded text :to="{name: 'Men'}">Men</v-btn>
+            </v-list-item-title>
           </v-list-item>
 
           <v-list-item>
-            <v-list-item-title>Women</v-list-item-title>
+            <v-list-item-title>
+              <!-- <router-link :to="{name: 'Women'}">Women</router-link> -->
+              <v-btn depressed rounded text :to="{name: 'Women'}">Women</v-btn>
+            </v-list-item-title>
           </v-list-item>
 
           <v-list-item>
-            <v-list-item-title>Kids</v-list-item-title>
+            <v-list-item-title>
+              <!-- <router-link :to="{name: 'Men'}">Kids</router-link> -->
+              <v-btn depressed rounded text :to="{name: 'Kids'}">Kids</v-btn>
+            </v-list-item-title>
           </v-list-item>
 
         </v-list-item-group>
@@ -171,7 +190,9 @@ export default {
       },
       email(){
         return this.$auth.user.email
-      }
+      }, 
+
+      
     }
 }
 
