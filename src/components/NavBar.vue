@@ -17,9 +17,8 @@
          
 
       <div v-if="!$vuetify.breakpoint.smAndDown">
-        <v-btn depressed rounded text :to="{name: 'Men'}">Men</v-btn>
-      <v-btn depressed rounded text :to="{name: 'Women'}">Women</v-btn>
-      <v-btn depressed rounded text :to="{name: 'Kids'}">Kids</v-btn>
+        <v-btn depressed rounded text :to="{name: 'Home'}">Home</v-btn>
+      <v-btn depressed rounded text :to="{name: 'Purchases'}">Purchases</v-btn>
       </div>
       
 
@@ -71,6 +70,7 @@
                 depressed
                 rounded
                 text
+                :to="{name: 'Profile'}"
               >
                 Profile
               </v-btn>
@@ -128,20 +128,7 @@
               <v-btn depressed rounded text :to="{name: 'Men'}">Men</v-btn>
             </v-list-item-title>
           </v-list-item>
-
-          <v-list-item>
-            <v-list-item-title>
-              <!-- <router-link :to="{name: 'Women'}">Women</router-link> -->
-              <v-btn depressed rounded text :to="{name: 'Women'}">Women</v-btn>
-            </v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-title>
-              <!-- <router-link :to="{name: 'Men'}">Kids</router-link> -->
-              <v-btn depressed rounded text :to="{name: 'Kids'}">Kids</v-btn>
-            </v-list-item-title>
-          </v-list-item>
+       
 
         </v-list-item-group>
       </v-list>
@@ -170,6 +157,7 @@ export default {
          // Log the user in
     login() {
       this.$auth.loginWithRedirect();
+      console.log(this.$auth)
     },
     // Log the user out
     logout() {

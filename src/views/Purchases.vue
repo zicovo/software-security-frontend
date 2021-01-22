@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Kids</h1>
+        <h1>Purchases</h1>
     </div>
 </template>
 
@@ -10,3 +10,6 @@
     }
 </script>
 
+<style lang="scss" scoped>
+
+</style>

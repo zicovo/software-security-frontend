@@ -1,0 +1,43 @@
+import axios from 'axios'
+
+const apiClient = axios.create({
+    // baseURL: 'https://api-software-security.zaci.xyz/api',
+    baseURL: 'http://localhost:4000/api',
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+    },
+    timeout: 10000
+})
+
+export default{
+
+    async findOne(accessToken, id){
+        try {
+            const { data } = await apiClient.get(`/users/${id}`, {headers: {Authorization: `Bearer ${accessToken}`}})
+            return data
+        } catch (error) {
+            console.log(error)
+            
+        }
+    },
+
+    async userInit(accessToken, user){
+        try {
+            const { data } = await apiClient.post('/users/init', user, {headers: {Authorization: `Bearer ${accessToken}`}})
+            return data
+        } catch (error) {
+            console.log(error)
+            
+        }
+    },
+
+    async isUserCompleted(accessToken, id){
+        try {
+            const { data } = await apiClient.get(`/users/isCompleted/${id}`, {headers: {Authorization: `Bearer ${accessToken}`}})
+            return data
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
