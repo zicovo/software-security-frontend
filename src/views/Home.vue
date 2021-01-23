@@ -57,7 +57,14 @@ export default {
     
   },
 
-   computed: mapState({Products: state => state.Products.Products.slice(0, 4)}),
+   computed: mapState({Products: state =>  {
+     if(!state.Products.Products){
+      return []
+     }
+     else {
+        return state.Products.Products.slice(0, 4)
+     }
+     }}),
 
   methods: {
     async getProducts() {

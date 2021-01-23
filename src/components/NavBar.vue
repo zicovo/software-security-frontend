@@ -18,8 +18,9 @@
 
       <div v-if="!$vuetify.breakpoint.smAndDown">
       <v-btn depressed rounded text :to="{name: 'Home'}">Home</v-btn>
-      <v-btn depressed rounded text :to="{name: 'Products'}">Products</v-btn>
-      <v-btn depressed rounded text :to="{name: 'Purchases'}">Purchases</v-btn>
+      <v-btn depressed rounded text :to="{name: 'Products'}">All Products</v-btn>
+      <v-btn depressed rounded text :to="{name: 'createProduct'}">create product</v-btn>
+      <v-btn depressed rounded text :to="{name: 'MyProducts'}">My Products</v-btn>
       </div>
       
 

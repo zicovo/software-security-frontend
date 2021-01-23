@@ -42,6 +42,8 @@
       </v-btn>
       </form>
      </ValidationObserver>
+
+     <div class="custom-spacer"></div>
     </div>
 </template>
 
@@ -107,4 +109,8 @@ export default {
   }
   }
 </script>
-
+<style>
+  .custom-spacer{
+    height: 350px;
+  }
+</style>

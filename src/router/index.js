@@ -2,10 +2,11 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import multiguard from 'vue-router-multiguard';
 import Home from '../views/Home.vue';
-import Purchases from '../views/Purchases.vue';
 import Profile from '../views/Profile.vue';
 import Products from '../views/Products.vue';
 import completeProfile from '../views/completeProfile.vue';
+import CreateProduct from '../views/CreateProduct.vue';
+import MyProducts from '../views/MyProducts.vue';
 import { authGuard } from '../auth/authGuard'
 import { isUserCompleted } from '../auth/isUserCompleted'
 import { userInit } from '../auth/userInitialised'
@@ -18,11 +19,6 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
-  },
-  {
-    path: '/Purchases',
-    name: 'Purchases',
-    component: Purchases
   },
   {
     path: '/Profile',
@@ -39,6 +35,20 @@ const routes = [
     path: '/Products',
     name: 'Products',
     component: Products
+  },
+  {
+    path: '/createProduct',
+    name: 'createProduct',
+    component: CreateProduct,
+    beforeEnter: multiguard([authGuard, isUserCompleted])
+
+  },
+  {
+    path: 'myProducts',
+    name: 'MyProducts',
+    component: MyProducts,
+    beforeEnter: multiguard([authGuard, isUserCompleted])
+
   },
 ];
 
