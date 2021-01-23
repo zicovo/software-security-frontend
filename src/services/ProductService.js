@@ -44,19 +44,23 @@ export default {
         }
     },
 
-    async deleteProduct(accessToken, product){
-        console.log(accessToken)
+    async deleteProduct(accessToken, product, _userId){
+        console.log(_userId)
         try {
-            const { data } = await apiClient.delete(`/products/${product.id}`, {headers: {Authorization: `Bearer ${accessToken}`}})
+            const { data } = await apiClient.delete(`/products/${product.id}`, {data: {userId: _userId}, headers: {Authorization: `Bearer ${accessToken}`}})
             return data
         } catch (error) {
             console.log(error)
         }
     },
 
-    async updateProduct(accessToken, product){
+    async updateProduct(accessToken, _product, _userId){
+        const payload = {
+            product: _product,
+            userId: _userId
+        }
         try {
-            const { data } = await apiClient.put(`/products/${product.id}`, product, {headers: {Authorization: `Bearer ${accessToken}`}})
+            const { data } = await apiClient.put(`/products/${_product.id}`, payload, { headers: {Authorization: `Bearer ${accessToken}`}})
             return data
         } catch (error) {
             console.log(error)

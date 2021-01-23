@@ -69,7 +69,8 @@ export const actions = {
         try{
             const authService = await getInstance()
             const token = await authService.getTokenSilently()
-            const deleteProduct = await ProductService.deleteProduct(token, product)
+            console.log(authService.user.sub)
+            const deleteProduct = await ProductService.deleteProduct(token, product, authService.user.sub)
             console.log(deleteProduct)
             commit('DELETE_PRODUCT', product)
         }
@@ -82,7 +83,7 @@ export const actions = {
         try{
             const authService = await getInstance()
             const token = await authService.getTokenSilently()
-            const updatedProduct = await ProductService.updateProduct(token, product)
+            const updatedProduct = await ProductService.updateProduct(token, product, authService.user.sub)
             console.log(updatedProduct)
             commit('UPDATE_PRODUCT', updatedProduct)
         }
