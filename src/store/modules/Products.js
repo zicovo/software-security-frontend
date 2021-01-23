@@ -21,6 +21,24 @@ export const mutations = {
         if(index2 > -1){
             state.myProducts.splice(index2, 1)
         }
+    },
+    UPDATE_PRODUCT(state, updatedProduct){
+        for(let item of state.Products){
+            if(item.id == updatedProduct.id){
+                item.title = updatedProduct.title
+                item.description = updatedProduct.description
+                item.price = updatedProduct.price
+            }
+        }
+
+        for(let item of state.myProducts){
+            if(item.id == updatedProduct.id){
+                item.title = updatedProduct.title
+                item.description = updatedProduct.description
+                item.price = updatedProduct.price
+            }
+        }
+
     }
 }
 
@@ -64,9 +82,9 @@ export const actions = {
         try{
             const authService = await getInstance()
             const token = await authService.getTokenSilently()
-            const deleteProduct = await ProductService.updateProduct(token, product.id)
-            console.log(deleteProduct)
-            commit('UPDATE_PRODUCT', product)
+            const updatedProduct = await ProductService.updateProduct(token, product)
+            console.log(updatedProduct)
+            commit('UPDATE_PRODUCT', updatedProduct)
         }
         catch(error){
             console.log(error)

@@ -6,7 +6,95 @@
             <v-card-text min-height="120">{{this.descriptionFormat(product.description)}}</v-card-text>
             <v-card-text>Price:  <strong> €{{product.price}} </strong></v-card-text>
             <v-card-actions>
-                    <v-btn dark color="orange" @click="editProduct" class="mr-2">edit</v-btn>
+                
+        <v-dialog
+            v-model="dialogEdit"
+            persistent
+            max-width="600"
+            >
+      <template v-slot:activator="{ on, attrs }">
+            <v-btn 
+            dark 
+            color="orange" 
+            v-bind="attrs"
+            v-on="on" 
+            class="mr-2">edit</v-btn>
+      </template>
+
+      <v-card>
+        <v-card-title class="headline">
+          Edit your product: 
+        </v-card-title>
+
+        <!-- edit form -->
+        <ValidationObserver>
+
+        <v-form @submit.prevent="submit">
+       <validation-provider
+        v-slot="{ errors }"
+        name="title"
+        rules="required"
+      >
+        <v-text-field
+          v-model="product.name"
+          :error-messages="errors"
+          label="name"
+          max-width="450"
+          required
+        ></v-text-field>
+      </validation-provider>
+      <validation-provider
+        v-slot="{ errors }"
+        name="description"
+        rules="required"
+      >
+        <v-text-field
+          v-model="product.description"
+          :error-messages="errors"
+          label="description"
+          required
+        ></v-text-field>
+      </validation-provider>
+      <validation-provider
+        v-slot="{ errors }"
+        name="price"
+        rules="required"
+        type="number"
+        min="0"
+      >
+        <v-text-field
+          v-model="product.price"
+          :error-messages="errors"
+          label="description"
+          required
+        ></v-text-field>
+      </validation-provider>
+        </v-form>
+     </ValidationObserver>
+
+        <!-- end form -->
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="green darken-1"
+            dark
+            @click="dialogEdit = false"
+          >
+            cancel
+          </v-btn>
+          <v-btn
+            color="red darken-1"
+            dark
+            @click="editProduct"
+          >
+            Update
+          </v-btn>
+        </v-card-actions>
+
+      </v-card>
+
+    </v-dialog>
 
         <v-dialog
             v-model="dialog"
@@ -53,12 +141,20 @@
 </template>
 
 <script>
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
+
 export default {
     props: { product: {type: Object}},
+
+     components: {
+        ValidationObserver: ValidationObserver,
+        ValidationProvider: ValidationProvider
+    },
 
     data() {
         return {
             dialog: false,
+            dialogEdit: false,
         }
     },
 
@@ -75,7 +171,9 @@ export default {
         },
 
         async editProduct(){
-            this.$store.dispatch('Products/editProduct', this.product)
+            this.dialogEdit = false
+
+            this.$store.dispatch('Products/updateProduct', this.product)
         }, 
 
         async deleteProduct(){
@@ -89,4 +187,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.v-text-field{
+      width: 550px;
+      margin: 0 auto;
+}
 </style>
