@@ -1,9 +1,10 @@
 <template>
     <div>
         <v-card class="mx-auto" max-width="344" outlined elevation="4">
-            <v-card-title>{{product.ProductName}}</v-card-title>
-            <v-img :src="require('../../public/assets/products/' + product.ProductImageSrc)" max-height="180px" min-height="180"></v-img>
-            <v-card-text min-height="120">{{this.descriptionFormat(product.ProductDescription)}}</v-card-text>
+            <v-card-title>{{product.name}}</v-card-title>
+            <v-img :src="require('../../public/assets/products/' + product.img)" max-height="180px" min-height="180"></v-img>
+            <v-card-text min-height="120">{{this.descriptionFormat(product.description)}}</v-card-text>
+            <v-card-text>Price:  <strong> €{{product.price}} </strong></v-card-text>
             <v-card-actions>
                     <v-btn dark >Add to Cart <v-icon class="ml-2">fa4 fa-shopping-cart</v-icon></v-btn>
             </v-card-actions>

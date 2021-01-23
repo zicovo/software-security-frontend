@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Adidas stan smith",
+        "description": "",
+        "price": 99.00,
+        "img": "adidas.jpg"
+    },
+    {
+        "name": "Nike air force one",
+        "description": "",
+        "price": 120.00,
+        "img": "nike.jpg"
+    },
+    {
+        "name": "Puma suede",
+        "description": "",
+        "price": 80.00,
+        "img": "puma.jpg"
+    },
+    {
+        "name": "Vans classic",
+        "description": "",
+        "price": 70.00,
+        "img": "vans.jpg"
+    }
+]

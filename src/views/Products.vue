@@ -1,63 +1,37 @@
 <template>
-  <div class="home">
-    <v-row>
-      <v-col>
-        <h2 class="mt-3 mb-3"  v-if="$auth.isAuthenticated">Welcome! {{$auth.user.nickname}}</h2>
-      </v-col>
-    </v-row>
- 
-    <Carrousel/>
-    <v-row class="mt-5">
-      <v-col>
-        <h2>Some classics</h2>
-      </v-col>
-    </v-row>
-      <v-row class="mt-5">
+    <div>
+        <h1>Products</h1>
+
+         <v-row class="mt-5">
       <v-col v-for="product in Products" :key="product.id" md="3" sm="4" xs="6">
 
         <ProductItem :product="product"/>
       </v-col>
     </v-row>
 
-    <Featured/>
-
-
-
-
-  </div>
+    <div class="custom-spacer"></div>
+    </div>
 </template>
 
 <script>
 // import { getInstance } from '@/auth';
 import { mapState } from 'vuex'
 import ProductItem from '@/components/ProductItem'
-import Carrousel from '@/components/Carrousel'
-import Featured from '@/components/Featured'
 
 
 export default {
-  name: 'home',
   components: {
     ProductItem,
-    Carrousel,
-    Featured,
-
-  },
-  
-  data() {
-    return {
-      // products: this.$store.state.Products.Products.slice(0, 4)
-    }
   },
  
 
   async created() {
     await this.getProducts();
-    console.log(this.products)
+    console.log(this.Products)
     
   },
 
-   computed: mapState({Products: state => state.Products.Products.slice(0, 4)}),
+   computed: mapState({Products: state => state.Products.Products}),
 
   methods: {
     async getProducts() {
@@ -78,3 +52,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.custom-spacer{
+    height: 250px;
+}
+</style>

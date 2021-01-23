@@ -4,6 +4,7 @@ import multiguard from 'vue-router-multiguard';
 import Home from '../views/Home.vue';
 import Purchases from '../views/Purchases.vue';
 import Profile from '../views/Profile.vue';
+import Products from '../views/Products.vue';
 import completeProfile from '../views/completeProfile.vue';
 import { authGuard } from '../auth/authGuard'
 import { isUserCompleted } from '../auth/isUserCompleted'
@@ -33,6 +34,11 @@ const routes = [
     path: '/completeProfile',
     name: 'completeProfile',
     component: completeProfile
+  },
+  {
+    path: '/Products',
+    name: 'Products',
+    component: Products
   },
 ];
 

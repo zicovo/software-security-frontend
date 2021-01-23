@@ -39,5 +39,15 @@ export default{
         } catch (error) {
             console.log(error)
         }
+    },
+
+    async updateUser(accessToken, user){
+        console.log(user)
+        try {
+            const { data } = await apiClient.put(`/users/${user.id}`, user, {headers: {Authorization: `Bearer ${accessToken}`}})
+            return data
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

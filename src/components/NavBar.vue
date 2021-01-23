@@ -17,7 +17,8 @@
          
 
       <div v-if="!$vuetify.breakpoint.smAndDown">
-        <v-btn depressed rounded text :to="{name: 'Home'}">Home</v-btn>
+      <v-btn depressed rounded text :to="{name: 'Home'}">Home</v-btn>
+      <v-btn depressed rounded text :to="{name: 'Products'}">Products</v-btn>
       <v-btn depressed rounded text :to="{name: 'Purchases'}">Purchases</v-btn>
       </div>
       
@@ -157,7 +158,8 @@ export default {
          // Log the user in
     login() {
       this.$auth.loginWithRedirect();
-      console.log(this.$auth)
+      this.$store.dispatch('Users/fetchUser', this.$auth.user.sub)
+      
     },
     // Log the user out
     logout() {

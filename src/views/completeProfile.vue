@@ -49,6 +49,7 @@
 
   import { required } from 'vee-validate/dist/rules'
   import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
+  import UserService from '../services/UserService'
 
   setInteractionMode('eager')
 
@@ -79,10 +80,29 @@ export default {
 
     async submit(){
         this.$refs.observer.validate()
+        try {
+          const user = {
+            id: this.$auth.user.sub,
+            firstname: this.user.firstName,
+            lastname: this.user.lastName,
+            completedProfile: true
+          }
+          const token = await this.$auth.getTokenSilently()
+          const data = await UserService.updateUser(token, user)
+          this.$router.push({ name : 'Profile' });
+
+          console.log(data)
+        } catch (error) {
+          console.log(error)
+        }
+        this.clear()
+    },
+
+    clear(){
         this.user.firstName = ''
         this.user.lastName = ''
         this.$refs.observer.reset()
-    },
+    }
 
   }
   }
