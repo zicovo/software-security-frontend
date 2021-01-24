@@ -32,7 +32,6 @@ export default {
 
   async created() {
     await this.getMyProducts();
-    console.log(this.myProducts)
     
   },
 

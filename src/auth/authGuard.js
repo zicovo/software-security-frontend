@@ -8,7 +8,6 @@ export const authGuard = (to, from, next) => {
   const fn = () => {
     // If the user is authenticated, continue with the route
     if (authService.isAuthenticated) {
-      console.log(authService.user.sub)
       store.dispatch('Users/fetchUser', authService.user.sub)
       return next();
     }

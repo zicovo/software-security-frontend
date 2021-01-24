@@ -107,7 +107,6 @@
     methods: {
       editForm(){
         this.disabled = false;
-        console.log(this.$store.state.Users.user)
       },
 
 
@@ -121,10 +120,8 @@
       },
 
       async getUserData(){
-        console.log('get my data')
         const token = await this.$auth.getTokenSilently()
         const userData = await UserService.getAllUserData(token, this.currentUser.id)
-        console.log(userData)
 
         //create json file with all user data
          let element = document.createElement('a');
