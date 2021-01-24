@@ -6,10 +6,6 @@ require('dotenv').config()
 // Import the Auth0 configuration
 // import { domain, clientId, audience } from '../auth_config.json'
 
-// const domain = process.env.DOMAIN
-// const clientId = process.env.CLIENTID
-// const audience = process.env.AUDIENCE
-
 // Import the plugin here
 import { Auth0Plugin } from './auth';
 
