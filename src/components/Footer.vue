@@ -12,7 +12,7 @@
                 <v-card-text class="white--text">
                 {{ new Date().getFullYear() }} — <strong> &copy; Zaci All rights reserved</strong>
                     <v-divider v-if="$vuetify.breakpoint.smAndDown" class="mt-1"></v-divider>
-                    <v-btn text dark>Privacy policy.</v-btn>
+                    <v-btn text dark :to="{name: 'privacyPolicy'}">Privacy policy.</v-btn>
 
                  <v-btn text dark icon>
                         <v-icon>fa4 fa-facebook</v-icon>

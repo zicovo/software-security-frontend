@@ -68,6 +68,16 @@ export default{
         } catch (error) {
             console.log(error)
         }
+    },
+
+    async deleteUser(accessToken, id){
+        try {
+            const { data } = await apiClient.delete(`/users/${id}`, {headers: {Authorization: `Bearer ${accessToken}`}})
+            return data
+            
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 

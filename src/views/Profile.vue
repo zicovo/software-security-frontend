@@ -141,6 +141,11 @@
 
       async deleteUser(){
         console.log('delete my data')
+        const token = await this.$auth.getTokenSilently()
+        const deleteData = await UserService.deleteUser(token, this.currentUser.id)
+        console.log(deleteData)
+        this.$router.push({name: 'deletedProfile'})
+        this.$auth.logout()
       }
     }
 

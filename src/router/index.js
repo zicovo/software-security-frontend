@@ -9,12 +9,13 @@ import CreateProduct from '../views/CreateProduct.vue';
 import MyProducts from '../views/MyProducts.vue';
 import AdminProducts from '../views/adminProducts.vue';
 import createAdmin from '../views/createAdmin.vue';
+import deletedProfile from '../views/deletedProfile.vue';
 import { createAdminGuard } from '../auth/createAdmin'
 import { authGuard } from '../auth/authGuard'
 import { isUserCompleted } from '../auth/isUserCompleted'
 import { userInit } from '../auth/userInitialised'
 import { deleteAdminGuard } from '../auth/deleteAdmin'
-
+import privacyPolicy from '../views/privacyPolicy'
 Vue.use(VueRouter);
 
 
@@ -36,6 +37,11 @@ const routes = [
     component: completeProfile
   },
   {
+    path: '/deletedProfile',
+    name: 'deletedProfile',
+    component: deletedProfile
+  },
+  {
     path: '/Products',
     name: 'Products',
     component: Products,
@@ -50,6 +56,11 @@ const routes = [
     path: '/createAdmin',
     name: 'createAdmin',
     component: createAdmin
+  },
+  {
+    path: '/privacyPolicy',
+    name: 'privacyPolicy',
+    component: privacyPolicy
   },
   {
     path: '/createProduct',
