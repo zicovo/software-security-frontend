@@ -54,8 +54,26 @@
       >
         Edit
       </v-btn>
+       <v-btn
+        class="mr-4"
+        color="blue"
+        dark
+        @click="getUserData"
+      >
+      Get my data
+     </v-btn>
+      <v-btn
+        class="mr-4"
+        color="red"
+        dark
+        @click="deleteUser"
+      >
+      Delete my profile
+     </v-btn>
       </v-form>
      </ValidationObserver>
+
+    
 
 <div class="custom-spacer"></div>
         </v-container>
@@ -66,6 +84,7 @@
 <script>
     import { mapState } from 'vuex'
     import { ValidationObserver, ValidationProvider } from 'vee-validate';
+    import UserService from '@/services/UserService'
 
     export default {
     middleware: ['userInitialised','completelyRegistered'],
@@ -99,6 +118,29 @@
         this.$store.dispatch('Users/updateUser', updatedUser)
 
         this.showSuccess = true
+      },
+
+      async getUserData(){
+        console.log('get my data')
+        const token = await this.$auth.getTokenSilently()
+        const userData = await UserService.getAllUserData(token, this.currentUser.id)
+        console.log(userData)
+
+        //create json file with all user data
+         let element = document.createElement('a');
+          element.setAttribute(
+            'href',
+            'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(userData))
+          );
+          element.setAttribute('download', 'user_data.json');
+          element.style.display = 'none';
+          document.body.appendChild(element);
+          element.click();
+          document.body.removeChild(element);
+            }, 
+
+      async deleteUser(){
+        console.log('delete my data')
       }
     }
 

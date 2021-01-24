@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-    baseURL: 'https://api-software-security.zaci.xyz/api',
-    // baseURL: 'http://localhost:4000/api',
+    // baseURL: 'https://api-software-security.zaci.xyz/api',
+    baseURL: 'http://localhost:4000/api',
     headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -50,5 +50,25 @@ export default{
             console.log(error)
         }
     },
+
+    async fetchUserWithRoles(accessToken, id){
+        try {
+            const { data } = await apiClient.get(`/users/withRoles/${id}`, {headers: {Authorization: `Bearer ${accessToken}`}})
+            return data
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
+    async getAllUserData(accessToken, id){
+        try {
+            const { data } = await apiClient.get(`/users/getAllUserData/${id}`, {headers: {Authorization: `Bearer ${accessToken}`}})
+            return data
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
 }

@@ -7,9 +7,13 @@ import Products from '../views/Products.vue';
 import completeProfile from '../views/completeProfile.vue';
 import CreateProduct from '../views/CreateProduct.vue';
 import MyProducts from '../views/MyProducts.vue';
+import AdminProducts from '../views/adminProducts.vue';
+import createAdmin from '../views/createAdmin.vue';
+import { createAdminGuard } from '../auth/createAdmin'
 import { authGuard } from '../auth/authGuard'
 import { isUserCompleted } from '../auth/isUserCompleted'
 import { userInit } from '../auth/userInitialised'
+import { deleteAdminGuard } from '../auth/deleteAdmin'
 
 Vue.use(VueRouter);
 
@@ -34,13 +38,24 @@ const routes = [
   {
     path: '/Products',
     name: 'Products',
-    component: Products
+    component: Products,
+    beforeEnter: deleteAdminGuard
+  },
+  {
+    path: '/AdminProducts',
+    name: 'AdminProducts',
+    component: AdminProducts,
+  },
+  {
+    path: '/createAdmin',
+    name: 'createAdmin',
+    component: createAdmin
   },
   {
     path: '/createProduct',
     name: 'createProduct',
     component: CreateProduct,
-    beforeEnter: multiguard([authGuard, isUserCompleted])
+    beforeEnter: multiguard([authGuard, isUserCompleted, createAdminGuard])
 
   },
   {

@@ -39,6 +39,16 @@ export const mutations = {
             }
         }
 
+    },
+    DELETE_PRODUCT_ADMIN(state, deletedProduct){
+        const index1 = state.Products.indexOf(deletedProduct)
+        const index2 = state.myProducts.indexOf(deletedProduct)
+        if (index1 > -1) {
+            state.Products.splice(index1, 1);
+        }
+        if(index2 > -1){
+            state.myProducts.splice(index2, 1)
+        }
     }
 }
 
@@ -70,7 +80,7 @@ export const actions = {
             const authService = await getInstance()
             const token = await authService.getTokenSilently()
             console.log(authService.user.sub)
-            const deleteProduct = await ProductService.deleteProduct(token, product, authService.user.sub)
+            const deleteProduct = await ProductService.deleteProduct(token, product)
             console.log(deleteProduct)
             commit('DELETE_PRODUCT', product)
         }
@@ -78,12 +88,25 @@ export const actions = {
             console.log(error)
         }
     },
+    async deleteProductAdmin({commit}, product){
+        try{
+            const authService = await getInstance()
+            const token = await authService.getTokenSilently()
+            const deleteProduct = await ProductService.deleteProductAdmin(token, product)
+            console.log(deleteProduct)
+            commit('DELETE_PRODUCT_ADMIN', product)
+        }
+        catch(error){
+            console.log(error)
+        }
+    },
+    
 
     async updateProduct({commit}, product){
         try{
             const authService = await getInstance()
             const token = await authService.getTokenSilently()
-            const updatedProduct = await ProductService.updateProduct(token, product, authService.user.sub)
+            const updatedProduct = await ProductService.updateProduct(token, product)
             console.log(updatedProduct)
             commit('UPDATE_PRODUCT', updatedProduct)
         }
